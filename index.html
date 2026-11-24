@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wolfy Packs — Colección de Lobitos</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>🐺 Wolfy Packs</h1>
+      <span class="subtitle">Resuelve rápido · Mejora tu suerte · Colecciona</span>
+    </div>
+    <div class="stats">
+      <div class="stat-box">
+        <span class="stat-label">Wolfichas</span>
+        <span id="money-display" class="stat-value">$500.00</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">Ingresos</span>
+        <span id="income-display" class="stat-value">$0.00/s</span>
+      </div>
+      <button id="reset-save-btn" class="btn-ghost" title="Reiniciar partida">↺</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- COLUMNA IZQUIERDA: TIENDA Y MINIJUEGOS -->
+    <section class="panel shop-panel">
+      <h2>Tienda de Paquetes</h2>
+      <div class="pack-card">
+        <div class="pack-art praderas-art">
+          <span>🌿</span>
+          <strong>Paquete Praderas</strong>
+          <small>9 Lobitos · Base $1/s – $30/s</small>
+        </div>
+
+        <div class="mode-selector">
+          <label class="mode-option">
+            <input type="radio" name="gameMode" value="normal" checked />
+            <span>Normal (Pool por velocidad)</span>
+          </label>
+          <label class="mode-option hard">
+            <input type="radio" name="gameMode" value="hard" />
+            <span>🔥 Hard: Eat the Fishes (+50% ventana · +Ediciones/Shiny)</span>
+          </label>
+        </div>
+
+        <div id="minigame-choice" class="minigame-choice">
+          <label>Minijuego Normal:</label>
+          <select id="normal-minigame-select">
+            <option value="random">Aleatorio (Cables o Secuencia)</option>
+            <option value="wires">Conectar Cables (3 colores)</option>
+            <option value="sequence">Secuencia Rápida</option>
+          </select>
+        </div>
+
+        <button id="buy-pack-btn" class="btn-primary">
+          Comprar Paquete Praderas ($100)
+        </button>
+      </div>
+
+      <!-- ZONA ACTIVA DE MINIJUEGO -->
+      <div id="puzzle-arena" class="puzzle-arena hidden">
+        <div class="puzzle-header">
+          <span id="puzzle-title" class="badge">Minijuego</span>
+          <span id="puzzle-timer" class="timer">0.00s</span>
+        </div>
+        <p id="puzzle-instruction" class="puzzle-instruction"></p>
+        <div id="puzzle-stage" class="puzzle-stage"></div>
+      </div>
+
+      <!-- RESULTADO DE APERTURA -->
+      <div id="reward-modal" class="reward-modal hidden">
+        <div class="reward-content">
+          <div id="reward-tier-info" class="reward-tier-info"></div>
+          <div id="reward-card-preview" class="lobito-card large"></div>
+          <button id="claim-reward-btn" class="btn-primary">¡Añadir a la Colección!</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLUMNA DERECHA: ÁLBUM / COLECCIÓN -->
+    <section class="panel collection-panel">
+      <div class="collection-header">
+        <h2>Colección Praderas (<span id="unlocked-count">0</span>/9)</h2>
+        <span class="hint">Las ediciones y Shiny multiplican tus $/s</span>
+      </div>
+      <div id="collection-grid" class="collection-grid"></div>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
